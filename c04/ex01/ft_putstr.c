@@ -1,49 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:02:19 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:19 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/18 15:11:49 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/20 14:26:07 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	length;
+#include <unistd.h>
 
-	length = 0;
+void	ft_putstr(char *str)
+{
 	while (*str)
 	{
-		length++;
+		write(1, str, 1);
 		str++;
 	}
-	return (length);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (src[i])
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	return (dest);
 }
 /*
-#include <stdio.h>
-
-int	main(void)
+int     main(void)
 {
-	char	str[14] = "Hello ";
-	printf("Hello + World: %s", ft_strcat(str, "World!\n"));
+        ft_putstr("School 42");
+        return (0);
 }
 */

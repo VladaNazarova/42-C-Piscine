@@ -1,49 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 17:11:22 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:33:30 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/20 18:18:05 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/20 18:43:38 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
+int	ft_is_prime(int nb)
 {
-	unsigned int	length;
+	int	i;
 
-	length = 0;
-	while (*str)
+	if (nb <= 1)
+		return (0);
+	i = 2;
+	while (i < nb)
 	{
-		length++;
-		str++;
-	}
-	return (length);
-}
-
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int	i;
-	unsigned int	dest_len;
-
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (i < nb && src[i])
-	{
-		dest[dest_len + i] = src[i];
+		if (nb % i == 0)
+			return (0);
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	return (1);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	char    src[14] = "Hello ";
-        printf("Hello + World: %s", ft_strncat(src, "World!\n", 2));
+	printf("%d\n", ft_is_prime(0));
+	printf("%d\n", ft_is_prime(1));
+	printf("%d\n", ft_is_prime(2));
+	printf("%d\n", ft_is_prime(3));
+	printf("%d\n", ft_is_prime(67));
+	printf("%d\n", ft_is_prime(88));
+	printf("%d\n", ft_is_prime(72));
+	printf("%d\n", ft_is_prime(79));
+	printf("%d\n", ft_is_prime(100));
 }
 */

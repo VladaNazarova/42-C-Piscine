@@ -1,49 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:02:19 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:19 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/12 18:02:04 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/12 19:04:31 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	length;
-
-	length = 0;
-	while (*str)
-	{
-		length++;
-		str++;
-	}
-	return (length);
-}
-
-char	*ft_strcat(char *dest, char *src)
+void	ft_sort_int_tab(int *tab, int size)
 {
 	int	i;
-	int	dest_len;
+	int	j;
+	int	temp;
 
-	dest_len = ft_strlen(dest);
 	i = 0;
-	while (src[i])
+	while (i < size - 1)
 	{
-		dest[dest_len + i] = src[i];
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (tab[j] > tab[j + 1])
+			{
+				temp = tab[j];
+				tab[j] = tab[j + 1];
+				tab[j + 1] = temp;
+			}
+			j++;
+		}
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	str[14] = "Hello ";
-	printf("Hello + World: %s", ft_strcat(str, "World!\n"));
-}
-*/

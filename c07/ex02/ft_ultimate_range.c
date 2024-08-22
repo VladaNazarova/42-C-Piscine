@@ -1,49 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 17:11:22 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:33:30 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/22 15:47:32 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/22 16:10:47 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
-{
-	unsigned int	length;
+#include <stdlib.h>
 
-	length = 0;
-	while (*str)
+int	ft_arr_len(int *arr)
+{
+	int	len;
+
+	len = 0;
+	while (*arr)
 	{
-		length++;
-		str++;
+		len++;
+		arr++;
 	}
-	return (length);
+	return (len);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	unsigned int	i;
-	unsigned int	dest_len;
+	int	*ptr;
 
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (i < nb && src[i])
+	if (min >= max)
+		return (0);
+	ptr = (int *)malloc(sizeof(int) * (max - min));
+	if (!ptr)
+		return (-1);
+	*range = ptr;
+	while (min < max)
 	{
-		dest[dest_len + i] = src[i];
-		i++;
+		*ptr = min;
+		min++;
+		ptr++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	return (ft_arr_len(*range));
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	char    src[14] = "Hello ";
-        printf("Hello + World: %s", ft_strncat(src, "World!\n", 2));
+	int	*range;
+
+	printf("%d", ft_ultimate_range(&range, 1, 10));
 }
 */

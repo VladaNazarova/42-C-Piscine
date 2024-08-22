@@ -1,49 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 17:11:22 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:33:30 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/22 14:14:13 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/22 15:09:22 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
-{
-	unsigned int	length;
+#include <stdlib.h>
 
-	length = 0;
+int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = 0;
 	while (*str)
 	{
-		length++;
+		len++;
 		str++;
 	}
-	return (length);
+	return (len);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strdup(char *src)
 {
-	unsigned int	i;
-	unsigned int	dest_len;
+	char	*ptr;
+	char	*dest;
 
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (i < nb && src[i])
+	ptr = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (!ptr)
+		return (NULL);
+	dest = ptr;
+	while (*src)
 	{
-		dest[dest_len + i] = src[i];
-		i++;
+		*ptr++ = *src++;
 	}
-	dest[dest_len + i] = '\0';
+	*ptr = '\0';
 	return (dest);
 }
 /*
 #include <stdio.h>
+#include <string.h>
 
 int	main(void)
 {
-	char    src[14] = "Hello ";
-        printf("Hello + World: %s", ft_strncat(src, "World!\n", 2));
+	char *s = "School 42";
+	printf("%s\n", ft_strdup(s));
+	printf("%s\n", strdup(s));
 }
 */

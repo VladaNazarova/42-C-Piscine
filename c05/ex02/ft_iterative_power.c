@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 20:14:59 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 14:02:22 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/19 16:28:44 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/19 17:29:23 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_iterative_power(int nb, int power)
 {
-	while (*s1 && *s1 == *s2)
+	int	res;
+
+	res = nb;
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	while (power > 1)
 	{
-		s1++;
-		s2++;
+		res *= nb;
+		power--;
 	}
-	return (*s1 - *s2);
+	return (res);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	printf("ABC, ABC: %d\n", ft_strcmp("ABC", "ABC"));
-	printf("AC, ABC: %d\n", ft_strcmp("AC", "ABC"));
-	printf("AB, ABC: %d\n", ft_strcmp("AB", "ABC"));
-	printf("YWDT, WPIZ: %d\n", ft_strcmp("YWDC", "WPIZ"));
-	printf("empty, ABC: %d\n", ft_strcmp("", "ABC"));
-	printf("empty, empty: %d\n", ft_strcmp("", ""));
-	printf("abc, abcd: %d\n", ft_strcmp("abc", "abcd"));
+	printf("%d\n", ft_iterative_power(2, 2));
+	printf("%d\n", ft_iterative_power(2, -2));
+	printf("%d\n", ft_iterative_power(2, 0));
+	printf("%d\n", ft_iterative_power(0, 0));
 }
 */

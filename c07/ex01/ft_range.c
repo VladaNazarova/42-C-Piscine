@@ -1,35 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/14 20:14:59 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 14:02:22 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/22 15:10:33 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/22 15:47:02 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
 {
-	while (*s1 && *s1 == *s2)
+	int	*ptr;
+	int	*arr;
+
+	if (min >= max)
+		return (NULL);
+	ptr = (int *)malloc(sizeof(int) * (max - min));
+	if (!ptr)
+		return (NULL);
+	arr = ptr;
+	while (min < max)
 	{
-		s1++;
-		s2++;
+		*ptr = min;
+		min++;
+		ptr++;
 	}
-	return (*s1 - *s2);
+	return (arr);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	printf("ABC, ABC: %d\n", ft_strcmp("ABC", "ABC"));
-	printf("AC, ABC: %d\n", ft_strcmp("AC", "ABC"));
-	printf("AB, ABC: %d\n", ft_strcmp("AB", "ABC"));
-	printf("YWDT, WPIZ: %d\n", ft_strcmp("YWDC", "WPIZ"));
-	printf("empty, ABC: %d\n", ft_strcmp("", "ABC"));
-	printf("empty, empty: %d\n", ft_strcmp("", ""));
-	printf("abc, abcd: %d\n", ft_strcmp("abc", "abcd"));
+	int	i;
+	int	*arr;
+
+	arr = ft_range(1, 10);
+	i = 0;
+	while (i < (10 - 1))
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
 }
 */

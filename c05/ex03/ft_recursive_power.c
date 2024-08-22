@@ -1,49 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:02:19 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:19 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/19 17:24:38 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/19 18:17:02 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_recursive_power(int nb, int power)
 {
-	int	length;
-
-	length = 0;
-	while (*str)
-	{
-		length++;
-		str++;
-	}
-	return (length);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (src[i])
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	if (power == 1)
+		return (nb);
+	return (nb * ft_recursive_power(nb, power - 1));
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	char	str[14] = "Hello ";
-	printf("Hello + World: %s", ft_strcat(str, "World!\n"));
+	printf("%d\n", ft_recursive_power(2, 2));
+	printf("%d\n", ft_recursive_power(2, -2));
+	printf("%d\n", ft_recursive_power(2, 0));
+	printf("%d\n", ft_recursive_power(0, 0));
 }
 */

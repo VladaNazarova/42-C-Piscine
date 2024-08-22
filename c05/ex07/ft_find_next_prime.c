@@ -1,49 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 17:11:22 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:33:30 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/21 13:48:31 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/21 14:36:09 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
+int	ft_is_prime(int nb)
 {
-	unsigned int	length;
+	int	i;
 
-	length = 0;
-	while (*str)
+	if (nb <= 1)
+		return (0);
+	i = 2;
+	while (i < nb)
 	{
-		length++;
-		str++;
-	}
-	return (length);
-}
-
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int	i;
-	unsigned int	dest_len;
-
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (i < nb && src[i])
-	{
-		dest[dest_len + i] = src[i];
+		if (nb % i == 0)
+			return (0);
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	return (1);
+}
+
+int	ft_find_next_prime(int nb)
+{
+	while (nb++)
+	{
+		if (ft_is_prime(nb))
+			return (nb);
+	}
+	return (nb);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	char    src[14] = "Hello ";
-        printf("Hello + World: %s", ft_strncat(src, "World!\n", 2));
+	printf("%d", ft_find_next_prime(35));
 }
 */

@@ -1,49 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vnazarov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:02:19 by vnazarov          #+#    #+#             */
-/*   Updated: 2024/08/20 12:35:19 by vnazarov         ###   ########.fr       */
+/*   Created: 2024/08/21 17:41:09 by vnazarov          #+#    #+#             */
+/*   Updated: 2024/08/21 17:55:47 by vnazarov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	length;
+#include <unistd.h>
 
-	length = 0;
+void	ft_putstr(char *str)
+{
 	while (*str)
-	{
-		length++;
-		str++;
-	}
-	return (length);
+		write(1, str++, 1);
 }
 
-char	*ft_strcat(char *dest, char *src)
+int	main(int argc, char **argv)
 {
 	int	i;
-	int	dest_len;
 
-	dest_len = ft_strlen(dest);
-	i = 0;
-	while (src[i])
+	i = 1;
+	while (i < argc)
 	{
-		dest[dest_len + i] = src[i];
+		ft_putstr(argv[i]);
+		write(1, "\n", 1);
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	char	str[14] = "Hello ";
-	printf("Hello + World: %s", ft_strcat(str, "World!\n"));
-}
-*/
